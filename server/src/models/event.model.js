@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const EventSchema = new mongoose.Schema(
   {
@@ -26,7 +26,7 @@ const EventSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    pincode: {
+    pinCode: {
       type: Number,
       required: true,
     },
@@ -53,4 +53,5 @@ const EventSchema = new mongoose.Schema(
 );
 
 const EventModel = mongoose.model("events", EventSchema);
-module.exports = EventModel;
+
+export default EventModel;

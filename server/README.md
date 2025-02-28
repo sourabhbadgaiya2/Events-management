@@ -319,3 +319,185 @@ PUT /api/user/update-user
   "message": "No fields to update"
 }
 ```
+
+## Event Management API
+
+### Create Event
+
+```http
+POST /api/events/create-event
+```
+
+**Authentication:** Bearer Token required (Organizer role only)
+
+**Request Body:**
+
+```json
+{
+  "name": "Tech Conference 2024",
+  "description": "Annual technology conference",
+  "organizer": "Tech Corp",
+  "guests": ["Speaker 1", "Speaker 2"],
+  "address": "123 Tech Street",
+  "city": "Silicon Valley",
+  "pinCode": 123456,
+  "date": "2024-06-15",
+  "time": "09:00 AM",
+  "media": ["image1.jpg", "image2.jpg"],
+  "ticketTypes": [
+    {
+      "type": "VIP",
+      "price": 199.99
+    }
+  ]
+}
+```
+
+**Success Response (201):**
+
+```json
+{
+  "message": "Event Created Successfully",
+  "savedEvents": {
+    "_id": "event_id",
+    "name": "Tech Conference 2024",
+    // ... other event details
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+}
+```
+
+**Error Responses:**
+
+```json
+{
+  "message": "Event Already Exists"
+}
+```
+
+### Update Event
+
+```http
+PUT /api/events/edit-event/:id
+```
+
+**Authentication:** Bearer Token required (Organizer role only)
+
+**Parameters:**
+
+- `id`: Event ID (path parameter)
+
+**Request Body:** (fields to update)
+
+```json
+{
+  "name": "Updated Tech Conference 2024",
+  "description": "Updated description"
+}
+```
+
+**Success Response (200):**
+
+```json
+{
+  "message": "Event updated successfully",
+  "event": {
+    "_id": "event_id",
+    "name": "Updated Tech Conference 2024"
+    // ... updated event details
+  }
+}
+```
+
+### Delete Event
+
+```http
+DELETE /api/events/delete-event/:id
+```
+
+**Authentication:** Bearer Token required (Organizer role only)
+
+**Parameters:**
+
+- `id`: Event ID (path parameter)
+
+**Success Response (200):**
+
+```json
+{
+  "message": "Event deleted successfully"
+}
+```
+
+### Search Events
+
+```http
+GET /api/events/search
+```
+
+**Authentication:** Bearer Token required
+
+**Query Parameters:**
+
+- `searchText`: Search term for event name (optional)
+- `date`: Filter by specific date (optional)
+
+**Success Response (200):**
+
+```json
+{
+  "data": [
+    {
+      "_id": "event_id",
+      "name": "Tech Conference 2024"
+      // ... event details
+    }
+    // ... more events
+  ]
+}
+```
+
+### Get Event by ID
+
+```http
+GET /api/events/get-event/:id
+```
+
+**Authentication:** Bearer Token required
+
+**Parameters:**
+
+- `id`: Event ID (path parameter)
+
+**Success Response (200):**
+
+```json
+{
+  "data": {
+    "_id": "event_id",
+    "name": "Tech Conference 2024",
+    "description": "Annual technology conference"
+    // ... other event details
+  }
+}
+```
+
+**Error Response (404):**
+
+```json
+{
+  "message": "Event not found"
+}
+```
+
+### Status Codes
+
+| Status Code | Description                             |
+| ----------- | --------------------------------------- |
+| 200         | Success                                 |
+| 201         | Event created successfully              |
+| 400         | Bad request or validation error         |
+| 401         | Unauthorized - Token missing or invalid |
+| 403         | Forbidden - Insufficient permissions    |
+| 404         | Event not found                         |
+| 500         | Server error                            |

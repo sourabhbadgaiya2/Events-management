@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 //! Import
 import authRouter from "./routes/auth.routes.js";
 import userRouter from "./routes/user.routes.js";
+import eventRouter from "./routes/event.routes.js";
 import ErrorHandlers from "./helpers/ErrorHandler.js";
 import ErrorHandler from "./middleware/customError.middleware.js";
 
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 //!Routes
 app.use("/api/auth", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/events", eventRouter);
 
 //! Error Handler
 app.all("*", (req, res, next) => {
