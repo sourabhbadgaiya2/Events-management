@@ -34,11 +34,11 @@ export const Login = async (req, res, next) => {
       .status(200)
       .cookie("token", token, {
         expires: new Date(Date.now() + 3 * 60 * 60 * 1000),
-        httpOnly: true,
+        httpOnly: false,
       })
       .json({
         success: true,
-        message: "User created Successfully",
+        message: "User Logged In Successfully",
         user: existUser,
       });
   } catch (error) {

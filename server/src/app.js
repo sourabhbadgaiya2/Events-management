@@ -13,7 +13,12 @@ import ErrorHandler from "./middleware/customError.middleware.js";
 const app = express();
 
 //! middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser());

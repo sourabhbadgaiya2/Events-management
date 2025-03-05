@@ -18,6 +18,8 @@ import { createEvents, EventUpdates } from "../service/event.service.js";
 //! CREATE EVENT
 export const createEvent = async (req, res, next) => {
   const { body } = req;
+  // console.log(body);
+
   try {
     const savedEvents = await createEvents({ body });
 
