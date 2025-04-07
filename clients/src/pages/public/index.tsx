@@ -97,20 +97,10 @@ const PublicPage = () => {
         </section>
 
         {/* Images Section - Now Vertical */}
-        <section className='w-full lg:w-1/2 flex flex-col items-center gap-4 lg:-mt-16'>
+        <section className='w-full lg:w-1/2 flex flex-col items-center gap-4'>
           <img
-            src='https://images.unsplash.com/photo-1726607424562-62cf93236dd8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+            src='https://secure.meetupstatic.com/next/images/home/SpotlightHeroSectionVisual.webp?w=640'
             alt='Event 1'
-            className='rounded-lg w-[60%] max-w-md'
-          />
-          <img
-            src='https://images.unsplash.com/photo-1726607424562-62cf93236dd8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='Event 2'
-            className='rounded-lg w-[60%] max-w-md'
-          />
-          <img
-            src='https://images.unsplash.com/photo-1726607424562-62cf93236dd8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-            alt='Event 3'
             className='rounded-lg w-[60%] max-w-md'
           />
         </section>
