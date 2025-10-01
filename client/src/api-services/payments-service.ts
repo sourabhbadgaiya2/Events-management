@@ -1,4 +1,4 @@
-import axios from "../config/axiosInstance";
+import axios from "axios";
 
 export const getClientSecret = async (amount: number) => {
   const response = await axios.post("/api/payments/create-payment-intent", {
