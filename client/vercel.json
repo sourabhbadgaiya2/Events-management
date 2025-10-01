@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:match*",
-      "destination": "https://SOURevents-mern-server-udemy.onrender.com/api/:match*"
+      "destination": "https://events-management-d3gq.onrender.com/api/:match*"
     },
     {
       "source": "/(.*)",
