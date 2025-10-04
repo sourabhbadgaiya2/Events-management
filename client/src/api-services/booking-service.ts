@@ -1,7 +1,10 @@
 import axios from "axios";
 
 export const createBooking = async (data: any) => {
-  const response = await axios.post("/api/bookings/create-booking", data);
+  const response = await axios.post(
+    "https://events-management-d3gq.onrender.com/api/bookings/create-booking",
+    data
+  );
   return response.data;
 };
 
