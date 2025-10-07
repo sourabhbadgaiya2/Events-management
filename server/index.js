@@ -21,30 +21,32 @@ app.use(cookieParser());
 
 const nodemailer = require("nodemailer");
 
-async function testConnection() {
-  const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,           // SSL
-    secure: true,
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_APP_PASSWORD, // ya OAuth2 token
-    },
-    connectionTimeout: 10000, // 10 sec
-    greetingTimeout: 5000,
-    socketTimeout: 10000
-  });
+const transporter = nodemailer.createTransport({
+  host: "smtp.sendgrid.net",
+  port: 587,
+  secure: false, // TLS
+  auth: {
+    user: "apikey", // SendGrid me username hamesha 'apikey'
+    pass: "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", // aapka generated API key
+  },
+});
 
-  transporter.verify((error, success) => {
-    if (error) {
-      console.log("❌ Connection failed:", error.message);
-    } else {
-      console.log("✅ Connection successful!");
-    }
-  });
+async function sendMail() {
+  try {
+    const info = await transporter.sendMail({
+      from: "sourabhbadgaiya2@gmail.com",    // verified sender email in SendGrid
+      to: "sourabhbadgaiya273@gmail.com",
+      subject: "Test Email from Render",
+      text: "Hello! This is a test email using SendGrid + Nodemailer.",
+    });
+    console.log("✅ Email sent successfully:", info.messageId);
+  } catch (err) {
+    console.error("❌ Error sending email:", err);
+  }
 }
 
-testConnection();
+sendMail();
+
 
 
 
