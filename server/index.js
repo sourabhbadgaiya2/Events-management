@@ -18,6 +18,36 @@ app.use(
 );
 
 app.use(cookieParser());
+
+const nodemailer = require("nodemailer");
+
+async function testConnection() {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,           // SSL
+    secure: true,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD, // ya OAuth2 token
+    },
+    connectionTimeout: 10000, // 10 sec
+    greetingTimeout: 5000,
+    socketTimeout: 10000
+  });
+
+  transporter.verify((error, success) => {
+    if (error) {
+      console.log("❌ Connection failed:", error.message);
+    } else {
+      console.log("✅ Connection successful!");
+    }
+  });
+}
+
+testConnection();
+
+
+
 app.use("/api/users", require("./routes/users-route"));
 app.use("/api/events", require("./routes/events-route"));
 app.use("/api/payments", require("./routes/payments-route"));
