@@ -27,7 +27,7 @@ const transporter = nodemailer.createTransport({
   secure: false, // TLS
   auth: {
     user: "apikey", // SendGrid me username hamesha 'apikey'
-    pass: "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", // aapka generated API key
+    pass: process.env.SENDGRID_API_KEY, // aapka generated API key
   },
 });
 
