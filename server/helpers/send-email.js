@@ -8,7 +8,7 @@ const sendEmail = async ({ email, subject, text, html }) => {
       // port: 587,
       // secure: false,
       port: 465, // SSL
-      secure: true 
+      secure: true,
       auth: {
         user: process.env.NODEMAILER_EMAIL,
         pass: process.env.NODEMAILER_PASSWORD,
